@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petrichore Studios - Coming Soon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #e0e7ff, #ffffff); /* Light gradient inspired by logo */
+            text-align: center;
+        }
+        h1 {
+            color: #f4a261; /* Orange from logo */
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #264653; /* Dark blue from logo */
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        #countdown {
+            font-size: 2em;
+            color: #2a9d8f; /* Teal from logo */
+            background-color: #e9c46a; /* Light yellow from logo */
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <img src = "petrichor.png">
+    <h1>Petrichore Studios</h1>
+    <p>Coming Soon - An Online Multimedia and Printing Marketplace Platform by <a href = "https://paratopic.com">Paratopic Technologies</a> </p>
+    <div id="countdown">10d 0h 0m 0s</div>
+
+    <script>
+        function updateCountdown() {
+            const now = new Date();
+            const launchDate = new Date(now);
+            launchDate.setDate(now.getDate() + 10); // 10 days from now
+            launchDate.setHours(16, 29, 0, 0); // Set to 04:29 PM CEST
+
+            const diff = launchDate - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            if (diff < 0) {
+                clearInterval(interval);
+                document.getElementById('countdown').innerText = "Launching Now!";
+            }
+        }
+
+        updateCountdown();
+        const interval = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
